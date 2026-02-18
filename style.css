@@ -58,6 +58,46 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ===== THEME (LIGHT / DARK) ===== */
+:root{
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --text: #222831;
+    --muted: #555;
+    --accent: #2c3e50;
+}
+.dark {
+    --bg: #0f1720;
+    --card: #0b1318;
+    --text: #e6eef6;
+    --muted: #9aa6b2;
+    --accent: #8fb0c7;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 200ms ease, color 200ms ease;
+}
+.page-section, .site-nav a {
+    background: var(--card);
+}
+.site-nav a { color: var(--accent); }
+.page-section p { color: var(--muted); }
+
+.theme-btn{
+    margin-left:8px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding:6px 8px;
+    border-radius:4px;
+    cursor:pointer;
+}
+.theme-btn:hover{ opacity:0.9 }
+
+/* Ensure Flourish embeds contrast on dark backgrounds */
+.flourish-embed iframe, .flourish-embed object { background: transparent; }
+
 /* ===== LAYOUT FOR SITE SECTIONS ===== */
 .site-nav {
     display: flex;
