@@ -89,25 +89,18 @@ body {
 .site-nav a { color: var(--accent); }
 .page-section p { color: var(--muted); }
 
-.theme-btn{
-    margin-left:8px;
-    background: transparent;
-    border: 1px solid rgba(0,0,0,0.08);
-    padding:6px 8px;
-    border-radius:4px;
-    cursor:pointer;
-}
-.theme-btn:hover{ opacity:0.9 }
+.theme-btn{ display:none; }
 
 /* Ensure Flourish embeds contrast on dark backgrounds */
 .flourish-embed iframe, .flourish-embed object { background: transparent; }
 
-/* ===== LAYOUT FOR SITE SECTIONS ===== */
 .site-nav {
     display: flex;
     gap: 12px;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     margin: 20px 0;
+    padding: 0 12px;
 }
 .site-nav .nav-links { display:flex; gap:0; align-items:center; }
 .site-nav .nav-links a {

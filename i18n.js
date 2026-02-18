@@ -4,18 +4,18 @@ const I18N_STRINGS = {
         siteTitle: 'Operation Condor Interactive Dataverse',
         intro: 'Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. This site is a work in progress and is regularly updated.',
         'nav.victims': 'Victims',
-        'nav.justice': 'The path to justice',
+        'nav.justice': 'The Path to Justice',
         'nav.more': 'More (TBC)',
         'victims.title': 'Victims',
         'victims.desc': 'Placeholder for visualisations and text about victims.',
-        'justice.title': 'The path to justice',
+        'justice.title': 'The Path to Justice',
         'justice.desc': 'Placeholder for visualisations and text about justice processes.',
         'more.title': 'More (TBC)',
         'more.desc': 'Additional visualisations and content will be added here.'
     },
     es: {
         siteTitle: 'Dataverso interactivo de la Operación Cóndor',
-        intro: 'Bienvenido al dataverso interactivo de la Operación Cóndor. Este sitio se ha desarrollado como un aspecto interactivo del sitio plancondor.org y utiliza datos de recursos del sitio. El sitio está en desarrollo y se actualiza regularmente.',
+        intro: 'Bienvenido al dataverso interactivo del Plan Cóndor. Este sitio se ha desarrollado como un aspecto interactivo del sitio plancondor.org y utiliza datos de recursos del sitio. El sitio está en desarrollo y se actualiza regularmente.',
         'nav.victims': 'Víctimas',
         'nav.justice': 'El camino hacia la justicia',
         'nav.more': 'Más (por confirmar)',
@@ -52,47 +52,12 @@ function setLanguage(lang) {
     // Reload so third-party embeds initialise with selected data-src
     location.reload();
 }
-
-/* THEME HANDLING */
-function applyTheme(theme) {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-        root.classList.add('dark');
-    } else if (theme === 'light') {
-        root.classList.remove('dark');
-    } else if (theme === 'system') {
-        // follow system preference
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        root.classList.toggle('dark', prefersDark);
-    }
-    // Update toggle button appearance
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.textContent = document.documentElement.classList.contains('dark') ? '🌙' : '☀️';
-}
-
-function setTheme(theme) {
-    localStorage.setItem('siteTheme', theme);
-    applyTheme(theme);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('siteLang') || 'en';
     // Attach handlers
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
     });
-
-    // Theme init
-    const savedTheme = localStorage.getItem('siteTheme') || 'system';
-    applyTheme(savedTheme);
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-            const next = current === 'dark' ? 'light' : 'dark';
-            setTheme(next);
-        });
-    }
 
     applyTranslations(lang);
 });
