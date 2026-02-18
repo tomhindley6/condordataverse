@@ -58,8 +58,25 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
     });
-
     applyTranslations(lang);
+
+    // Collapsible sections: restore saved state and attach toggles
+    document.querySelectorAll('.page-section').forEach(section => {
+        const id = section.id;
+        const key = `collapsed_${id}`;
+        const collapsed = localStorage.getItem(key) === 'true';
+        if (collapsed) section.classList.add('collapsed');
+        const btn = section.querySelector('.collapse-btn');
+        const body = section.querySelector('.section-body');
+        if (btn && body) {
+            btn.setAttribute('aria-expanded', String(!section.classList.contains('collapsed')));
+            btn.addEventListener('click', () => {
+                const isCollapsed = section.classList.toggle('collapsed');
+                btn.setAttribute('aria-expanded', String(!isCollapsed));
+                localStorage.setItem(key, String(isCollapsed));
+            });
+        }
+    });
 });
 
 // Expose for debugging
