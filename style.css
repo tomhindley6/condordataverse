@@ -133,6 +133,8 @@ body {
 .page-section h2 {
     color: var(--text);
     margin-top: 0;
+    font-family: 'Special Elite', monospace;
+    font-weight: bold;
 }
 .flourish-embed {
     width: 100%;
