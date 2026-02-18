@@ -30,15 +30,19 @@ h1 {
 p {
     /* Text color */
     color: var(--muted);
-    
+
     /* Size of the text */
     font-size: 1em;
-    
+
     /* Height of each line (spacing between lines) */
     line-height: 1.6;
-    
+
     /* Font family */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Emphasis requested: bold and italic */
+    font-style: italic;
+    font-weight: 600;
 }
 
 /* ===== BODY STYLING ===== */
@@ -105,12 +109,21 @@ body {
     justify-content: center;
     margin: 20px 0;
 }
-.site-nav a {
+.site-nav .nav-links { display:flex; gap:0; align-items:center; }
+.site-nav .nav-links a {
     text-decoration: none;
     color: var(--accent);
     padding: 8px 12px;
-    border-radius: 4px;
-    background: rgba(44,62,80,0.06);
+    background: transparent;
+    border-radius: 0;
+}
+.site-nav .nav-links a + a {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(0,0,0,0.08);
+}
+.dark .site-nav .nav-links a + a {
+    border-left: 1px solid rgba(255,255,255,0.06);
 }
 .content {
     max-width: 1000px;
