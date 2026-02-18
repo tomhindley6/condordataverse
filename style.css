@@ -57,3 +57,49 @@ body {
     /* Font family for everything */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* ===== LAYOUT FOR SITE SECTIONS ===== */
+.site-nav {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 20px 0;
+}
+.site-nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background: rgba(44,62,80,0.06);
+}
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.page-section {
+    padding: 40px 16px;
+    margin: 20px 0;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.page-section:nth-child(even) {
+    background: #fbfcfd;
+}
+.section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.page-section h2 {
+    color: #1b3a4b;
+    margin-top: 0;
+}
+.flourish-embed {
+    width: 100%;
+    min-height: 360px;
+    margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+    .site-nav { flex-wrap: wrap; }
+}
