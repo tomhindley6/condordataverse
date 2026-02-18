@@ -3,7 +3,7 @@
 /* This styles the main heading (h1) */
 h1 {
     /* Color of the text */
-    color: #2c3e50;
+    color: var(--text);
     
     /* Size of the text */
     font-size: 2.5em;
@@ -29,7 +29,7 @@ h1 {
 /* This styles regular paragraphs */
 p {
     /* Text color */
-    color: #555;
+    color: var(--muted);
     
     /* Size of the text */
     font-size: 1em;
@@ -107,7 +107,7 @@ body {
 }
 .site-nav a {
     text-decoration: none;
-    color: #2c3e50;
+    color: var(--accent);
     padding: 8px 12px;
     border-radius: 4px;
     background: rgba(44,62,80,0.06);
@@ -119,19 +119,19 @@ body {
 .page-section {
     padding: 40px 16px;
     margin: 20px 0;
-    background: white;
+    background: var(--card);
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 .page-section:nth-child(even) {
-    background: #fbfcfd;
+    background: var(--card);
 }
 .section-inner {
     max-width: 900px;
     margin: 0 auto;
 }
 .page-section h2 {
-    color: #1b3a4b;
+    color: var(--text);
     margin-top: 0;
 }
 .flourish-embed {
