@@ -113,10 +113,7 @@ body {
 .site-nav .nav-links a + a {
     margin-left: 12px;
     padding-left: 12px;
-    border-left: 1px solid rgba(0,0,0,0.08);
-}
-.dark .site-nav .nav-links a + a {
-    border-left: 1px solid rgba(255,255,255,0.06);
+    border-left: 1px solid rgba(255,255,255,0.18);
 }
 .content {
     max-width: 1000px;
@@ -141,6 +138,9 @@ body {
     margin-top: 0;
     font-family: 'Special Elite', monospace;
     font-weight: bold;
+    font-size: 1.8em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .flourish-embed {
     width: 100%;
