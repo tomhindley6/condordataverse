@@ -24,6 +24,35 @@ h1 {
     font-family: 'Special Elite', monospace;
 }
 
+/* Banner styles */
+.banner-wrapper { position: relative; }
+.logo { display:block; position: relative; }
+.logo .site-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 220px;
+}
+.banner-text {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.36);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-family: 'Special Elite', monospace;
+    font-weight: 700;
+    font-size: 2.55em;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+@media (max-width: 640px) {
+    .logo .site-banner { max-height: 140px; }
+    .banner-text { font-size: 0.95em; right: 8px; bottom: 8px; }
+}
+
 /* ===== PARAGRAPH/BODY TEXT STYLING ===== */
 
 /* This styles regular paragraphs */
@@ -58,6 +87,8 @@ body {
     /* Margin removes default spacing around the body */
     margin: 0;
     
+    /* Base font size increased for larger UI */
+    font-size: 1.125rem;
     /* Font family for everything */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -106,7 +137,8 @@ body {
 .site-nav .nav-links a {
     text-decoration: none;
     color: var(--accent);
-    padding: 8px 12px;
+    padding: 12px 16px;
+    font-size: 1.05rem;
     background: transparent;
     border-radius: 0;
     font-family: 'Special Elite', monospace;
@@ -118,11 +150,11 @@ body {
     border-left: 1px solid rgba(255,255,255,0.18);
 }
 .content {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 .page-section {
-    padding: 40px 16px;
+    padding: 48px 20px;
     margin: 20px 0;
     background: var(--card);
     border-radius: 6px;
@@ -132,7 +164,7 @@ body {
     background: var(--card);
 }
 .section-inner {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 .section-header{
@@ -164,13 +196,13 @@ body {
     margin-top: 0;
     font-family: 'Special Elite', monospace;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 2.2em;
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .flourish-embed {
     width: 100%;
-    min-height: 360px;
+    min-height: 520px;
     margin-top: 18px;
 }
 

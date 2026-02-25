@@ -7,66 +7,81 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 data-i18n="siteTitle">Operation Condor Interactive Dataverse</h1>
-    <p data-i18n="intro">Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. This site is a work in progress and is regularly updated.</p>
-
-    <nav class="site-nav">
-        <div class="nav-links">
-            <a href="#victims" data-i18n="nav.victims">Victims</a>
-            <a href="#justice" data-i18n="nav.justice">The path to justice</a>
-            <a href="#more" data-i18n="nav.more">More (TBC)</a>
-        </div>
-        <div class="lang-switcher">
-            <button data-lang="en" class="lang-btn">EN</button>
-            <button data-lang="es" class="lang-btn">ES</button>
-        </div>
-    </nav>
-
-    <main class="content">
-        <section id="victims" class="page-section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <h2 data-i18n="victims.title">Victims</h2>
-                    <button class="collapse-btn" aria-expanded="true" aria-controls="victims-content">▾</button>
-                </div>
-                <div id="victims-content" class="section-body">
-                    <p data-i18n="victims.desc">Placeholder for visualisations and text about victims.</p>
-                    <div class="flourish-embed flourish-chart" data-src-en="visualisation/27665432" data-src-es="visualisation/27665432"></div>
-                </div>
+        <!DOCTYPE html>
+        <html class="dark">
+        <head>
+            <title>PlanCondor Interactive Dataverse</title>
+            <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <div class="banner-wrapper">
+                <a class="logo navbar-btn pull-left" href="https://plancondor.org/en" title="Home" rel="home">
+                    <img class="site-banner" src="./banner-superior.png" alt="Home">
+                    <span class="banner-text">Plan Cóndor</span>
+                </a>
             </div>
-        </section>
+            <h1 data-i18n="siteTitle">Operation Condor Interactive Dataverse</h1>
+            <p data-i18n="intro">Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. This site is a work in progress and is regularly updated.</p>
 
-        <section id="justice" class="page-section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <h2 data-i18n="justice.title">The path to justice</h2>
-                    <button class="collapse-btn" aria-expanded="true" aria-controls="justice-content">▾</button>
+            <nav class="site-nav">
+                <div class="nav-links">
+                    <a href="#victims" data-i18n="nav.victims">Victims</a>
+                    <a href="#justice" data-i18n="nav.justice">The path to justice</a>
+                    <a href="#more" data-i18n="nav.more">Restitutions</a>
                 </div>
-                <div id="justice-content" class="section-body">
-                    <p data-i18n="justice.desc">Placeholder for visualisations and text about justice processes.</p>
-                    <div class="flourish-embed flourish-chart" data-src-en="visualisation/27693012" data-src-es="visualisation/27693012"></div>
-                    <div class="flourish-embed flourish-chart" data-src-en="visualisation/27699181" data-src-es="visualisation/27699181"></div>
-                    <div class="flourish-embed flourish-chart" data-src-en="visualisation/27699518" data-src-es="visualisation/27699518"></div>
+                <div class="lang-switcher">
+                    <button data-lang="en" class="lang-btn">EN</button>
+                    <button data-lang="es" class="lang-btn">ES</button>
                 </div>
-            </div>
-        </section>
+            </nav>
 
-        <section id="more" class="page-section">
-            <div class="section-inner">
-                <div class="section-header">
-                    <h2 data-i18n="more.title">More (TBC)</h2>
-                    <button class="collapse-btn" aria-expanded="true" aria-controls="more-content">▾</button>
-                </div>
-                <div id="more-content" class="section-body">
-                    <p data-i18n="more.desc">Additional visualisations and content will be added here.</p>
-                    <div class="flourish-embed flourish-chart" data-src-en="visualisation/PUT_ID_HERE" data-src-es="visualisation/PUT_ID_HERE"></div>
-                </div>
-            </div>
-        </section>
-    </main>
+            <main class="content">
+                <section id="victims" class="page-section">
+                    <div class="section-inner">
+                        <div class="section-header">
+                            <h2 data-i18n="victims.title">Victims</h2>
+                            <button class="collapse-btn" aria-expanded="true" aria-controls="victims-content">▾</button>
+                        </div>
+                        <div id="victims-content" class="section-body">
+                            
+                            <div class="flourish-embed flourish-chart" data-src-en="visualisation/27665432" data-src-es="visualisation/27665432"></div>
+                        </div>
+                    </div>
+                </section>
 
-    <script src="i18n.js"></script>
-    <script src="https://public.flourish.studio/resources/embed.js"></script>
-</body>
-</html>
+                <section id="justice" class="page-section">
+                    <div class="section-inner">
+                        <div class="section-header">
+                            <h2 data-i18n="justice.title">The path to justice</h2>
+                            <button class="collapse-btn" aria-expanded="true" aria-controls="justice-content">▾</button>
+                        </div>
+                        <div id="justice-content" class="section-body">
+                            
+                               <div class="flourish-embed flourish-chart" data-src-en="visualisation/27699518" data-src-es="visualisation/27699518"></div>
+                               <div class="flourish-embed flourish-chart" data-src="visualisation/27665311"><noscript><img src="https://public.flourish.studio/visualisation/27665311/thumbnail" width="100%" alt="visualization" /></noscript></div>
+                               <div class="flourish-embed flourish-chart" data-src-en="visualisation/27699181" data-src-es="visualisation/27699181"></div>
+                               
+                        </div>
+                    </div>
+                </section>
+
+                <section id="Restitutions" class="page-section">
+                    <div class="section-inner">
+                        <div class="section-header">
+                            <h2 data-i18n="more.title">Restitutions and Justice</h2>
+                            <button class="collapse-btn" aria                                                                                                               -expanded="true" aria-controls="more-content">▾</button>
+                        </div>
+                        <div id="more-content" class="section-body">
+                            
+                            <div class="flourish-embed flourish-chart" data-src-en="visualisation/27715237" data-src-es="visualisation/27715237"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <script src="i18n.js"></script>
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+        </body>
+        </html>
 

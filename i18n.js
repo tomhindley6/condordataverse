@@ -5,12 +5,12 @@ const I18N_STRINGS = {
         intro: 'Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. This site is a work in progress and is regularly updated.',
         'nav.victims': 'Victims',
         'nav.justice': 'The Path to Justice',
-        'nav.more': 'More (TBC)',
+        'nav.more': 'Restitutions',
         'victims.title': 'Victims',
         'victims.desc': 'Placeholder for visualisations and text about victims.',
         'justice.title': 'The Path to Justice',
         'justice.desc': 'Placeholder for visualisations and text about justice processes.',
-        'more.title': 'More (TBC)',
+        'more.title': 'Restitutions and Justice',
         'more.desc': 'Additional visualisations and content will be added here.'
     },
     es: {
@@ -18,12 +18,12 @@ const I18N_STRINGS = {
         intro: 'Bienvenido al dataverso interactivo del Plan Cóndor. Este sitio se ha desarrollado como un aspecto interactivo del sitio plancondor.org y utiliza datos de recursos del sitio. El sitio está en desarrollo y se actualiza regularmente.',
         'nav.victims': 'Víctimas',
         'nav.justice': 'El camino hacia la justicia',
-        'nav.more': 'Más (por confirmar)',
+        'nav.more': 'Restituciones',
         'victims.title': 'Víctimas',
         'victims.desc': 'Espacio reservado para visualizaciones y texto sobre las víctimas.',
         'justice.title': 'El camino hacia la justicia',
         'justice.desc': 'Espacio reservado para visualizaciones y texto sobre los procesos de justicia.',
-        'more.title': 'Más (por confirmar)',
+        'more.title': 'Restituciones y Justicia',
         'more.desc': 'Aquí se añadirán visualizaciones y contenido adicional.'
     }
 };
