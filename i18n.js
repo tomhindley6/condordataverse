@@ -1,8 +1,8 @@
 // Simple client-side i18n: English (en) and Spanish (es).
 const I18N_STRINGS = {
     en: {
-        siteTitle: 'Operation Condor Interactive Dataverse',
-        intro: 'Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. This site is a work in progress and is regularly updated.',
+        siteTitle: 'Operation Cóndor Interactive Dataverse',
+        intro: 'Welcome to the interactive dataverse for Operation Condor. This site has been developed as an interactive aspect of the plancondor.org website and uses data from site resources. If you are new to this area of study, please click the banner above, or go to plancondor.org to find out more. This site is a work in progress and is regularly updated.',
         'nav.victims': 'Victims',
         'nav.justice': 'The Path to Justice',
         'nav.more': 'Restitutions',
@@ -54,6 +54,14 @@ function setLanguage(lang) {
 }
 document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('siteLang') || 'en';
+
+    // Keep nav anchors aligned with section IDs in the current HTML
+    const moreSection = document.querySelector('[data-i18n="more.title"]')?.closest('.page-section');
+    const moreNavLink = document.querySelector('.site-nav a[data-i18n="nav.more"]');
+    if (moreSection && moreSection.id && moreNavLink) {
+        moreNavLink.setAttribute('href', `#${moreSection.id}`);
+    }
+
     // Attach handlers
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
