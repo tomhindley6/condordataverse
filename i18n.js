@@ -52,6 +52,75 @@ function setLanguage(lang) {
     // Reload so third-party embeds initialise with selected data-src
     location.reload();
 }
+
+function setupScrollDynamics() {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+    const rootStyle = document.documentElement.style;
+
+    const updateProgress = () => {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+        progressBar.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+
+        const headerProgress = Math.min(window.scrollY / 360, 1);
+        const headerScale = 1 - (headerProgress * 0.18);
+        const headerShift = -(headerProgress * 18);
+        const headerOpacity = 1 - (headerProgress * 0.35);
+        rootStyle.setProperty('--header-scale', headerScale.toFixed(3));
+        rootStyle.setProperty('--header-shift', `${headerShift.toFixed(1)}px`);
+        rootStyle.setProperty('--header-opacity', headerOpacity.toFixed(3));
+
+        const introProgress = Math.min(window.scrollY / 320, 1);
+        const introScale = 1 - (introProgress * 0.1);
+        const introShift = -(introProgress * 12);
+        const introOpacity = 1 - (introProgress * 0.45);
+        rootStyle.setProperty('--intro-scale', introScale.toFixed(3));
+        rootStyle.setProperty('--intro-shift', `${introShift.toFixed(1)}px`);
+        rootStyle.setProperty('--intro-opacity', introOpacity.toFixed(3));
+    };
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+
+    const sections = Array.from(document.querySelectorAll('.page-section'));
+    sections.forEach((section, index) => {
+        section.style.setProperty('--phase-index', String(index));
+    });
+
+    const embeds = Array.from(document.querySelectorAll('.page-section .flourish-embed'));
+    embeds.forEach((embed, index) => {
+        embed.style.setProperty('--phase-index', String(index % 4));
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        sections.forEach(section => section.classList.add('is-visible'));
+        embeds.forEach(embed => embed.classList.add('is-visible'));
+        return;
+    }
+
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            sectionObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+    const embedObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            embedObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
+    embeds.forEach(embed => embedObserver.observe(embed));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('siteLang') || 'en';
 
@@ -67,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
     });
     applyTranslations(lang);
+    setupScrollDynamics();
 
     // Collapsible sections: restore saved state and attach toggles
     document.querySelectorAll('.page-section').forEach(section => {

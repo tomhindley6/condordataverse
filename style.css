@@ -6,7 +6,7 @@ h1 {
     color: var(--text);
     
     /* Size of the text */
-    font-size: 2.5em;
+    font-size: clamp(2.4rem, 5.4vw, 4.2rem);
     
     /* Weight/thickness of the text (bold) */
     font-weight: bold;
@@ -22,6 +22,22 @@ h1 {
     
     /* Font family - clean, modern look */
     font-family: 'Special Elite', monospace;
+
+    transform: translateY(var(--header-shift, 0px)) scale(var(--header-scale, 1));
+    opacity: var(--header-opacity, 1);
+    transform-origin: center top;
+    will-change: transform, opacity;
+}
+
+p[data-i18n="intro"] {
+    max-width: 960px;
+    margin: 0 auto 64px;
+    text-align: left;
+    font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+    transform: translateY(var(--intro-shift, 0px)) scale(var(--intro-scale, 1));
+    opacity: var(--intro-opacity, 1);
+    transform-origin: center top;
+    will-change: transform, opacity;
 }
 
 /* Banner styles */
@@ -95,24 +111,48 @@ body {
 
 /* ===== THEME (LIGHT / DARK) ===== */
 :root{
-    --bg: #f8f9fa;
-    --card: #ffffff;
+    --bg: #222429;
+    --card: #222429;
     --text: #222831;
     --muted: #555;
     --accent: #2c3e50;
+    --header-scale: 1;
+    --header-shift: 0px;
+    --header-opacity: 1;
+    --intro-scale: 1;
+    --intro-shift: 0px;
+    --intro-opacity: 1;
 }
 .dark {
-    --bg: #0f1720;
-    --card: #0b1318;
+    --bg: #222429;
+    --card: #222429;
     --text: #e6eef6;
     --muted: #9aa6b2;
     --accent: #8fb0c7;
+    --header-scale: 1;
+    --header-shift: 0px;
+    --header-opacity: 1;
+    --intro-scale: 1;
+    --intro-shift: 0px;
+    --intro-opacity: 1;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
     transition: background-color 200ms ease, color 200ms ease;
+}
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    background: linear-gradient(90deg, rgba(143,176,199,0.95), rgba(230,238,246,0.9));
+    z-index: 9999;
+    pointer-events: none;
 }
 .page-section, .site-nav a {
     background: var(--card);
@@ -132,6 +172,7 @@ body {
     align-items: center;
     margin: 20px 0;
     padding: 0 12px;
+    background: var(--bg);
 }
 .site-nav .nav-links { display:flex; gap:0; align-items:center; }
 .site-nav .nav-links a {
@@ -139,10 +180,15 @@ body {
     color: var(--accent);
     padding: 12px 16px;
     font-size: 1.05rem;
-    background: transparent;
+    background: var(--bg);
     border-radius: 0;
     font-family: 'Special Elite', monospace;
     font-weight: 700;
+}
+.lang-btn {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.18);
 }
 .site-nav .nav-links a + a {
     margin-left: 12px;
@@ -159,6 +205,14 @@ body {
     background: var(--card);
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 480ms ease, transform 520ms ease;
+    transition-delay: calc(var(--phase-index, 0) * 90ms);
+}
+.page-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 .page-section:nth-child(even) {
     background: var(--card);
@@ -176,9 +230,9 @@ body {
     background: transparent;
     border: none;
     color: var(--muted);
-    font-size: 1.2em;
+    font-size: 1.4em;
     cursor: pointer;
-    padding: 6px 8px;
+    padding: 8px 10px;
 }
 .collapse-btn[aria-expanded="false"]{ transform: rotate(-90deg); }
 .section-body{
@@ -204,6 +258,41 @@ body {
     width: 100%;
     min-height: 520px;
     margin-top: 18px;
+    opacity: 0;
+    transform: translateY(16px) scale(0.99);
+    filter: blur(2px);
+    transition: opacity 420ms ease, transform 480ms ease, filter 420ms ease;
+    transition-delay: calc(var(--phase-index, 0) * 120ms);
+}
+.flourish-embed.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-progress,
+    .page-section,
+    .flourish-embed {
+        transition: none;
+    }
+
+    h1 {
+        transform: none;
+        opacity: 1;
+    }
+
+    p[data-i18n="intro"] {
+        transform: none;
+        opacity: 1;
+    }
+
+    .page-section,
+    .flourish-embed {
+        opacity: 1;
+        transform: none;
+        filter: none;
+    }
 }
 
 @media (max-width: 640px) {
